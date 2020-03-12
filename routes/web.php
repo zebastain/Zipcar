@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/reservation', function () {
     return view('reservation');
 });
+Route::get('/ordenes', function () {
+    return view('ordenes');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
