@@ -19,7 +19,7 @@ class CreateCarModelsTable extends Migration
             $table->string("brand");
             $table->integer("year");
             $table->string("description");
-            $table->image("string");
+            $table->string("image");
             $table->enum("type", ["SEDAN", "SUV", "VAN", "MINIVAN", 
                                   "CUV", "HATCHBACK", "COUPE"]);
             $table->timestamps();

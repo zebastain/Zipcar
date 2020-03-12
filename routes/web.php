@@ -22,6 +22,7 @@ Route::get('/reservation', function () {
 Route::get('/ordenes', function () {
     return view('ordenes');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

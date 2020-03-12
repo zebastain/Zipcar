@@ -20,7 +20,7 @@ class CreateCarsTable extends Migration
             $table->enum("status", ["GOOD", "MEDIUM", "BAD"]);
             $table->decimal("mileage");
             $table->timestamps();
-            $table->foreign("model")->references("id")->on("models")
+            $table->foreign("model")->references("id")->on("car_models")
                   ->onDelete("cascade");
         });
     }
