@@ -99,29 +99,25 @@
 
     <div class="row">
       <div class="col-lg-4">
-        <img src="img/icons8-car-100.png" alt="Generic placeholder image" width="140" height="140">
+        <img src="{{asset('img/car.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
         <h2>Catalog</h2>
         <p>We offer you an extense car catalog, so you can choose the one that suits your necessities the most.</p>
         <p><a class="btn bg-warning shadowed mt-4" href="#" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-lg-4">
-        <img src="img/icons8-gps-100.png" alt="Generic placeholder image" width="140" height="140">
-        <h2>GPS Tracking</h2>
-        <p>Here in Zipcar we think about your safety, and all our cars are equipped with a GPS Tracking and an Anti-theft system.</p>
+        <img src="{{asset('img/crown.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
+        <h2>Our plans</h2>
+        <p>We offer several plans: standard, premium, and advanced. Choose the one more suited for your needs, and remember you can cancel it at anytime.</p>
         <p><a class="btn bg-warning shadowed mt-4" href="#" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-lg-4">
-        <img src="img/icons8-uber-500.png" alt="Generic placeholder image" width="140" height="140">
-        <h2>Uber</h2>
-        <p>Thanks to our partnership with Uber you can also contract a driver to drive your car, with discounts up to 70%.</p>
+        <img src="{{asset('img/rental-car.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
+        <h2>Car rental</h2>
+        <p>You can rent any of our cars up to 30 days, and if you need, reserve them with even 10 days of anticipation.</p>
         <p><a class="btn bg-warning shadowed mt-4" href="#" role="button">View details &raquo;</a></p>
       </div>
     </div>
   </div>
-
-
-
-
 
 
   <h1 class="text-right bd-highlight mr-5 mt-5 pt-5" style="font-size: 40px; font-weight: bold;">
@@ -274,7 +270,7 @@
 
   </div>
   <!-- Footer Links -->
-
+  
   <!-- Copyright -->
   <div class="footer-copyright text-white text-center py-3" style="background: rgb(7, 148, 199);">© 2020 Copyright:
     <a class="text-white" href="https://gmmonsalve.github.io/Zipcar-lp/">Zipcar.com</a>
