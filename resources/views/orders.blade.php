@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,6 +83,16 @@
       <th scope="col">status</th>
 
     </tr>
+    @foreach($borrows as $order)
+    <tr>
+    <td>{{ $order->id }}</td>
+     <td>{{ $order->user }}</td>
+     <td>{{ $order->car }}</td>
+     <td>{{ $order->start_date }}</td>
+     <td>{{ $order->end_date}}</td>
+     <td>{{ $order->status}}</td>
+    </tr>
+    @endforeach
   </thead>
   <tbody>
     

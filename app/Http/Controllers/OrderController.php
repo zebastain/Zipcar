@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Borrow;
 
 class OrderController extends Controller
 {
@@ -13,7 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('orders');
+        $borrows = Borrow::all()->toArray();
+        return view('orders',compact('borrows'));
+
     }
 
     /**
