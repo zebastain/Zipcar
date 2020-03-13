@@ -16,7 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('orders');
+        $borrows = Borrow::all()->toArray();
+        return view('orders',compact('borrows'));
+
     }
 
     /**

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +18,12 @@
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Orders</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background :#6cb2eb;">
+  <a class="navbar-brand text-white" href="/home" im>
+  
+         <img src="{{ asset('img/logo.svg') }}" style="width: 25%;">
+          My historial
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,7 +32,7 @@
    
     <form class="form-inline my-2 my-lg-0 ml-auto mr-2">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
     </form>
             <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModalLong">
@@ -70,17 +76,24 @@
 </div>
   </div>
 </nav>
-<table class="table">
+<table class="table mt-5" style="width: 80%; margin: 0 auto; text-align: center;">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">user</th>
-      <th scope="col">car</th>
-      <th scope="col">start_date</th>
-      <th scope="col">end_date</th>
-      <th scope="col">status</th>
-
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
+    @foreach($borrows as $order)
+    <tr>
+    <td>{{ $order->id }}</td>
+     <td>{{ $order->user }}</td>
+     <td>{{ $order->car }}</td>
+     <td>{{ $order->start_date }}</td>
+     <td>{{ $order->end_date}}</td>
+     <td>{{ $order->status}}</td>
+    </tr>
+    @endforeach
   </thead>
   <tbody>
     
