@@ -33,7 +33,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a href="{{ route('catalog') }}" class="nav-link">
+                                {{__("Catalog")}}
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -67,7 +71,7 @@
                                     </form>
 
                                     <a class="dropdown-item" href="{{ route('order') }}">
-                                        {{ __('ordenes') }}
+                                        {{ __('My Orders') }}
                                     </a>   
                                 </div>
                             </li>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Car;
+use App\Borrow;
 
 class OrderController extends Controller
 {
@@ -21,9 +24,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($model)
     {
-        //
+        return view('create_order', ["cars" => Car::where('model', $model)->get()]);
     }
 
     /**
@@ -34,7 +37,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $borrow = new Borrow;
+        $borrow->user = Auth::id();
+        $borrow->car = $request->car;
+        $borrow->start_date = $request->start_date;
+        $borrow->end_date = $request->end_date;
+        $borrow->save();
+        return "Guardado";
     }
 
     /**
