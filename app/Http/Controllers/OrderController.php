@@ -16,8 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $borrows = Borrow::all()->toArray();
-        return view('orders',compact('borrows'));
+        return view('orders', ["orders" => Borrow::where('user', Auth::id())->get()]);
 
     }
 
@@ -39,13 +38,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "car" => "required",
+            "start_date" => "required",
+            "end_date" => "required"
+        ]);
         $borrow = new Borrow;
         $borrow->user = Auth::id();
         $borrow->car = $request->car;
         $borrow->start_date = $request->start_date;
         $borrow->end_date = $request->end_date;
         $borrow->save();
-        return "Guardado";
+        $car = Car::findOrFail($request->car);
+        $car->availability = "UNAVALIABLE";
+        $car->save();
+        return redirect()->route("order");
     }
 
     /**
@@ -88,8 +95,13 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $borrow = Borrow::findOrFail($id);
+        $car = Car::findOrFail($borrow->car);
+        $car->availability = "AVAILABLE";
+        $car->save();
+        $borrow->delete();
+        return "Deleted order " . $id;
     }
 }

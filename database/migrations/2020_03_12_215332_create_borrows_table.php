@@ -20,6 +20,9 @@ class CreateBorrowsTable extends Migration
             $table->date("start_date");
             $table->date("end_date");
             $table->enum("status", ["ACTIVE", "FINISHED", "OVERDUE"]);
+            $table->foreign("user")->references("username")->on("users")
+                  ->onDelete("cascade");
+            
             $table->timestamps();
         });
     }

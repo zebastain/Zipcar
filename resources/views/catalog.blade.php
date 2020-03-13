@@ -10,7 +10,7 @@
     <div class="row d-flex justify-content-center">
         @foreach ($models as $model)
         @php
-            $availability=App\Car::where('model', $model->id)->count();
+            $availability=App\Car::where('model', $model->id)->where('availability', 'AVAILABLE')->count();
         @endphp
         <div class="col-4 mb-5">
             <div class="card text-center" style="width: 18rem;">
