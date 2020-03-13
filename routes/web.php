@@ -16,13 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/reservation', function () {
-    return view('reservation');
-});
-Route::get('/ordenes', function () {
-    return view('ordenes');
-});
+
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+//-----------orders
+Route::get('/order', 'OrderController@index')->name('order')->middleware('auth');
+Route::post('/order/create', 'OrderController@create')->name('order.create')->middleware('auth');
+Route::delete('/order/{id}/cancel', 'OrderController@delete')->name('order.delete')->middleware('auth');

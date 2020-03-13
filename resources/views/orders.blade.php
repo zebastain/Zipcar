@@ -73,10 +73,13 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">id</th>
+      <th scope="col">user</th>
+      <th scope="col">car</th>
+      <th scope="col">start_date</th>
+      <th scope="col">end_date</th>
+      <th scope="col">status</th>
+
     </tr>
   </thead>
   <tbody>
