@@ -16,13 +16,13 @@ class CreateBorrowsTable extends Migration
         Schema::create('borrows', function (Blueprint $table) {
             $table->id();
             $table->string("user");
-            $table->foreignId("car");
+            $table->string("car");
             $table->date("start_date");
             $table->date("end_date");
             $table->enum("status", ["ACTIVE", "FINISHED", "OVERDUE"]);
             $table->foreign("user")->references("username")->on("users")
                   ->onDelete("cascade");
-            
+            $table->foreign("car")->references("number_plate")->on("cars");
             $table->timestamps();
         });
     }

@@ -102,7 +102,7 @@
         <img src="{{asset('img/car.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
         <h2>Catalog</h2>
         <p>We offer you an extense car catalog, so you can choose the one that suits your necessities the most.</p>
-        <p><a class="btn bg-warning shadowed mt-4" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn bg-warning shadowed mt-4" href="{{route('catalog')}}" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-lg-4">
         <img src="{{asset('img/crown.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
@@ -146,7 +146,7 @@
       <div class="carousel-item @if($part===$models[0]) active @endif">
         @foreach($part as $model)
         <div class="col-xs-4 col-sm-4 col-md-4">
-          <a href="#" class="slider_info" onclick="abc(this)">
+          <a href="{{route('model.show', $model->id)}}" class="slider_info" onclick="abc(this)">
             <img src="{{asset($model->image)}}" alt="{{$model->name}}" style="border-radius: 0.3em;width: 100%;height: 250px;">
           </a>
           <p class="text-center carousel-description">{{$model->name}}</p>
