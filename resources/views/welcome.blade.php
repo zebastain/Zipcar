@@ -136,65 +136,31 @@
   </ul>
 
   <!-- The slideshow -->
+  
   <div class="carousel-inner no-padding my-5">
     <div class="carousel-item active">
+      @foreach(App\CarModel::all()->take(3) as $car)
       <div class="col-xs-4 col-sm-4 col-md-4">
-        <a href="#" onclick=abc(this) class="slider_info">
-          <img class="img-fluid card-img-top" src="./img/car3.png">
+        <a href="#" class="slider_info">
+          <img src="{{asset($car->image)}}" alt="{{$car->name}}" class="img-fluid card-img-top">
         </a>
-      <p class="text-center" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">car</p>
-
+        <p class="text-center carousel-description">{{$car->name}}</p>
       </div>
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <a href="#" onclick=abc(this) class="slider_info">
-          <img class="img-fluid card-img-top rounded-bottom" src="./img/car2.png">
-        </a>
-        <p class="text-center" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">car</p>
-
-      </div>
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <a href="#" onclick=abc(this) class="slider_info">
-          <img class="img-fluid card-img-top rounded-bottom" src="./img/car1.png">
-        </a>
-        <p class="text-center" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">car</p>
-  
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <a href="#" onclick=abc(this) class="slider_info">
-          <img class="img-fluid card-img-top" src="./img/car4.png">
-        </a>
-        <p class="text-center" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">car 4</p>
-      </div>
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <a href="#" onclick=abc(this) class="slider_info">
-          <img class="img-fluid card-img-top" src="./img/car3.png">
-        </a>
-        <p class="text-center" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">car</p>
-      </div>
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <a href="#" onclick=abc(this) class="slider_info">
-          <img class="img-fluid card-img-top" src="./img/car2.png">
-        </a>
-        <p class="text-center" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">car</p>
-      </div>
-      
+      @endforeach
     </div>
   </div>
-
+  
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <i class="fas fa-arrow-circle-left"></i>
-                </a>
+  </a>
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <i class="fas fa-arrow-circle-right"></i>
-                </a>
+  </a>
 </div>
 <a class="shadowed nav-link bg-warning rounded-pill text-center mt-4 mb-5 join-button shadowed" style="width: 20%; margin: 0 auto; color:black;" href="#">Join now</a>
 </div>
 <footer class="page-footer font-small green pt-4">
-
   <!-- Footer Links -->
   <div class="container-fluid text-center text-md-left">
 
