@@ -129,25 +129,31 @@
   <div id="demo" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->
-  <ul class="carousel-indicators mb-0 pb-0">
+  <ul class="carousel-indicators mb-n3 pb-n3">
     <li data-target="#demo" data-slide-to="0" class="active"></li>
     <li data-target="#demo" data-slide-to="1"></li>
     <li data-target="#demo" data-slide-to="2"></li>
   </ul>
 
   <!-- The slideshow -->
-  
+  @php
+    $models = App\CarModel::all()
+                        ->take(9)
+                        ->chunk(3);
+  @endphp
   <div class="carousel-inner no-padding my-5">
-    <div class="carousel-item active">
-      @foreach(App\CarModel::all()->take(3) as $car)
-      <div class="col-xs-4 col-sm-4 col-md-4">
-        <a href="#" class="slider_info">
-          <img src="{{asset($car->image)}}" alt="{{$car->name}}" class="img-fluid card-img-top">
-        </a>
-        <p class="text-center carousel-description">{{$car->name}}</p>
+    @foreach ($models as $part)
+      <div class="carousel-item @if($part===$models[0]) active @endif">
+        @foreach($part as $model)
+        <div class="col-xs-4 col-sm-4 col-md-4">
+          <a href="#" class="slider_info" onclick="abc(this)">
+            <img src="{{asset($model->image)}}" alt="{{$model->name}}" style="border-radius: 0.3em;width: 100%;height: 250px;">
+          </a>
+          <p class="text-center carousel-description">{{$model->name}}</p>
+        </div>  
+        @endforeach
       </div>
-      @endforeach
-    </div>
+    @endforeach
   </div>
   
   <!-- Left and right controls -->
@@ -157,6 +163,7 @@
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <i class="fas fa-arrow-circle-right"></i>
   </a>
+
 </div>
 <a class="shadowed nav-link bg-warning rounded-pill text-center mt-4 mb-5 join-button shadowed" style="width: 20%; margin: 0 auto; color:black;" href="#">Join now</a>
 </div>

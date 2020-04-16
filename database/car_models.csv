@@ -1,0 +1,7 @@
+"id","name","brand","year","description","image","type","created_at","updated_at"
+"1","Duster","Renault","2020","The new Renault Duster. It's really cool and it can take you anywhere.","img/cars/duster.jpg","SUV",NULL,NULL
+"2","350z","Nissan","2004","Very fast car. Great for tuning but you can't tune it because it's not yours. Sorry","img/cars/nissan350z.jpg","COUPE",NULL,NULL
+"3","Cresta","Toyota","1997","NOOOOOOO!! MY CRESTA!!! O-O-ONIZUKAAAAAAAAAAA","img/cars/cresta.jpg","COUPE",NULL,NULL
+"4","Miata MX5","Mazda","1990","This car looks kind of weird, I think.","img/cars/miata.jpeg","COUPE",NULL,NULL
+"5","3000GT","Mitsubishi","2005","Another car for tuning that you cannot tune. Life is hard sometimes I guess.","img/cars/mitsubishi.jpg","COUPE",NULL,NULL
+"6","Lancer Evolution VIII","Mitsubishi","2005","I think this is that car from Tokyo Drift.","img/cars/lancer.jpg","COUPE",NULL,NULL

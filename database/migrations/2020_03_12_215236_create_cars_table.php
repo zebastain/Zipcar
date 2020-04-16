@@ -14,12 +14,13 @@ class CreateCarsTable extends Migration
     public function up()
     {
         Schema::create('cars', function (Blueprint $table) {
-            $table->id();
+            $table->string("number_plate")->unique();
             $table->foreignId("model");
             $table->enum("availability", ["AVAILABLE", "UNAVALIABLE"]);
             $table->enum("status", ["GOOD", "MEDIUM", "BAD"]);
             $table->decimal("mileage");
             $table->timestamps();
+            $table->primary('number_plate');
             $table->foreign("model")->references("id")->on("car_models")
                   ->onDelete("cascade");
         });

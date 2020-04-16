@@ -6,24 +6,27 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-5 text-center">{{__('Car catalog')}}</h1>
     <div class="row d-flex justify-content-center">
         @foreach ($models as $model)
         @php
             $availability=App\Car::where('model', $model->id)->where('availability', 'AVAILABLE')->count();
         @endphp
         <div class="col-4 mb-5">
-            <div class="card text-center" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{$model->name}}</h5>
-                    <img src="{{asset($model->image)}}" width="200px">
-                    <a href="{{ route('order.create', $model->id) }}" 
-                            class="btn btn-primary mt-2 @if ($availability == 0) disabled @endif">Reserve</a>
+            <a href="{{route('order.create', $model->id)}}" class="custom-card @if ($availability == 0) disabled @endif">
+                <div class="card">
+                    <img src="{{asset($model->image)}}" height="260px" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$model->name}}</h5>
+                        <span style="color:gray">
+                            @if ($availability==0)
+                            {{__('There are no cars available')}}
+                            @else
+                            {{__('There are ') . $availability . __(' cars avaiable')}}
+                            @endif
+                        </span>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    {{ __('Availability: ')}} {{ $availability }}
-                </div>
-            </div>
+            </a>
         </div>
         @endforeach
     </div>
