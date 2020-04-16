@@ -77,32 +77,32 @@ class CarModelSeeder extends Seeder
             'updated_at' => now()
         ]);
 		DB::table('car_models')->insert([
-			'name' => 'Dragon Airforce GTX ULTRA XTREME 9000',
-			'brand' => 'Dragon Airforce SA',
+			'name' => 'Audi R8 Coupé V10 Plus',
+			'brand' => 'Audi',
+			'year' => '2018',
+			'description' => $loremipsum,
+			'image' => 'img/cars/audi_r8.jpg',
+			'type' => 'COUPE',
+			'created_at' => now(),
+			'updated_at' => now()
+		 ]);
+		 DB::table('car_models')->insert([
+			'name' => 'Jaguar F-TYPE SVR Coupew',
+			'brand' => 'Jaguar',
 			'year' => '2019',
 			'description' => $loremipsum,
-			'image' => 'img/cars/dragon_airforce.jpg',
-			'type' => 'HÍBRIDO DE ALTO CILINDRAJE',
+			'image' => 'img/cars/jaguar.jpg',
+			'type' => 'COUPE',
 			'created_at' => now(),
 			'updated_at' => now()
 		 ]);
 		 DB::table('car_models')->insert([
-			'name' => 'Jetix Stream ultra attack specialized carbonated flow',
-			'brand' => 'Silver Fang incorporated',
-			'year' => '2008',
+			'name' => 'Porsche 911 Carrera 4S',
+			'brand' => 'Porsche',
+			'year' => '2019',
 			'description' => $loremipsum,
-			'image' => 'img/cars/jetix_stream.jpg',
-			'type' => 'TODO TERRENO',
-			'created_at' => now(),
-			'updated_at' => now()
-		 ]);
-		 DB::table('car_models')->insert([
-			'name' => 'Coupre Nissan ultra smart special promo + cute model',
-			'brand' => 'Trump inc.',
-			'year' => '2015',
-			'description' => $loremipsum,
-			'image' => 'img/cars/special_promo.jpg',
-			'type' => 'UNNECESSARY',
+			'image' => 'img/cars/porsche.jpg',
+			'type' => 'COUPE',
 			'created_at' => now(),
 			'updated_at' => now()
 		 ]);
