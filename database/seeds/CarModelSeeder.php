@@ -87,7 +87,7 @@ class CarModelSeeder extends Seeder
 			'updated_at' => now()
 		 ]);
 		 DB::table('car_models')->insert([
-			'name' => 'Jaguar F-TYPE SVR Coupew',
+			'name' => 'Jaguar F-TYPE SVR Coupe',
 			'brand' => 'Jaguar',
 			'year' => '2019',
 			'description' => $loremipsum,
