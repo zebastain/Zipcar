@@ -12,6 +12,30 @@
 @section('content')
 <script>
     $(function(){
+        
+        let getDataPromise = new Promise((resolve, reject) => {
+            $.get("/cars/{{ $model->id }}", function(data, status){
+                resolve(data);
+            });
+        }).then((data) => {
+            $('#quality').change(function(){
+                let selector = $('#car');
+                let quality = $('#quality').val();
+                console.log("Quality = " + quality);
+                selector.find('option').remove().end();
+                option = new Option('{{__("Select a car")}}');
+                option.disabled = true;
+                option.selected = true;
+                selector.append(option);
+                data.forEach(element => {
+                if (element.status === quality){
+                    console.log(element.number_plate);
+                    selector.append(new Option(element.number_plate, element.number_plate));
+                }
+            });
+        });
+        });
+        
         $('[type="date"]').prop('min', function(){
             var d = new Date(),
                 month = '' + (d.getMonth() + 1),
@@ -25,21 +49,7 @@
             return [year, month, day].join('-');
         });
 
-        $('#quality').change(function(){
-            let selector = $('#car');
-            selector.val([]);
-            let quality = $('#quality').val();
-            let modelId = {{ $model->id }};
-            $.get("/cars/" + modelId, function(data, status){
-                data.forEach(element => {
-                    if (element.status === quality){
-                        selector.append(new Option(element.number_plate, element.number_plate));
-                    }
-                });
-            });
-        });
         
-
     });
 </script>
 
@@ -58,27 +68,25 @@
                         <option selected disabled hidden>{{__('Select quality')}}</option>
                         <option value="GOOD">{{__('New')}}</option>
                         <option value="MEDIUM">{{__('Average')}}</option>
-                        <option value="LOW">{{__('Bad')}}</option>
+                        <option value="BAD">{{__('Bad')}}</option>
                     </select>
-                    <label for="car">{{__("Available cars")}}</label>
+
+                    <label for="car" class="mt-2">{{__("Available cars")}}</label>
                     <select id="car" class="form-control @error('car') is-invalid @enderror" name="car">
                         <option selected disable hidden>{{__('Select a car')}}</option>
                     </select>
                     @error('car')
-                   <small class="text-danger">{{ $message }}</small>
+                    <small class="text-danger">{{ $message }}</small>
                     @enderror
-                </div>
-                <div class="form-group">
-                    <label for="start_date">{{__('When do you want to use the car?')}}</label>
+
+                    <label for="start_date" class="mt-2">{{__('When do you want to use the car?')}}</label>
                     <input id="start_date" type="date" name="start_date" class="form-control @error('start_date') is-invalid @enderror"
                         value="{{old('start_date')}}"   >
                     @error('start_date')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
-                </div>
-        
-                <div class="form-group">
-                    <label for="end_date">{{__('When do you want to return the car?')}}</label>
+
+                    <label for="end_date" class="mt-2">{{__('When do you want to return the car?')}}</label>
                     <input id="end_date" type="date" name="end_date" class="form-control @error('end_date') is-invalid @enderror"
                         value="{{old('end_date')}}">
                     @error('end_date')

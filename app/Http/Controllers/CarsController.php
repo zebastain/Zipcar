@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Car;
 use App\CarModel;
+use App\Incident;
 
 class CarsController extends Controller
 {
@@ -26,7 +27,7 @@ class CarsController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -48,7 +49,10 @@ class CarsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('car', [
+            'car' => Car::findOrFail($id),
+            'incidents' => Incident::where('car', $id)->get()
+        ]);
     }
 
     /**
