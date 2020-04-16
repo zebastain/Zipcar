@@ -24,6 +24,22 @@
                 day = '0' + day;
             return [year, month, day].join('-');
         });
+
+        $('#quality').change(function(){
+            let selector = $('#car');
+            selector.val([]);
+            let quality = $('#quality').val();
+            let modelId = {{ $model->id }};
+            $.get("/cars/" + modelId, function(data, status){
+                data.forEach(element => {
+                    if (element.status === quality){
+                        selector.append(new Option(element.number_plate, element.number_plate));
+                    }
+                });
+            });
+        });
+        
+
     });
 </script>
 
@@ -37,12 +53,16 @@
             <form method="POST" action="{{ route('order.store') }}">
                 @csrf
                 <div class="form-group">
+                    <label for="quality">{{__("Quality")}}</label>
+                    <select id="quality" class="form-control @error('car') is-invalid @enderror" name="quality">
+                        <option selected disabled hidden>{{__('Select quality')}}</option>
+                        <option value="GOOD">{{__('New')}}</option>
+                        <option value="MEDIUM">{{__('Average')}}</option>
+                        <option value="LOW">{{__('Bad')}}</option>
+                    </select>
                     <label for="car">{{__("Available cars")}}</label>
-                    <select class="form-control @error('car') is-invalid @enderror" name="car">
-                        <option selected disabled hidden>{{__('Select a car')}}</option>
-                        @foreach ($cars as $car)
-                        <option value="{{$car->number_plate}}">{{$car->number_plate}} ({{$car->status}})</option>
-                        @endforeach        
+                    <select id="car" class="form-control @error('car') is-invalid @enderror" name="car">
+                        <option selected disable hidden>{{__('Select a car')}}</option>
                     </select>
                     @error('car')
                    <small class="text-danger">{{ $message }}</small>
@@ -52,7 +72,6 @@
                     <label for="start_date">{{__('When do you want to use the car?')}}</label>
                     <input id="start_date" type="date" name="start_date" class="form-control @error('start_date') is-invalid @enderror"
                         value="{{old('start_date')}}"   >
-                    <script>minDate();</script>
                     @error('start_date')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -62,7 +81,6 @@
                     <label for="end_date">{{__('When do you want to return the car?')}}</label>
                     <input id="end_date" type="date" name="end_date" class="form-control @error('end_date') is-invalid @enderror"
                         value="{{old('end_date')}}">
-                    <script>minDate();</script>
                     @error('end_date')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror

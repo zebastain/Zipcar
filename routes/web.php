@@ -23,5 +23,4 @@ Route::delete('/order/{id}/delete', 'OrderController@delete')->name('order.delet
 // ----- Catalog -----
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/model/{id}', 'CarModelController@show')->name('model.show');
-//Route:.get('/model')
-
+Route::get('/cars/{model}', 'CarsController@index');

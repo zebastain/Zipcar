@@ -19,13 +19,9 @@
   </thead>
   <tbody>
     @foreach($orders as $order)
-    @php
-        $car = App\Car::findOrFail($order->car);
-        $model = App\CarModel::findOrFail($car->model);
-    @endphp
     <tr id="order-{{$order->id}}">
       <td>{{ $order->id }}</td>
-      <td>{{ $model->name }}</td>
+      <td><a href="#">{{ $order->car }}</a></td>
       <td>{{ $order->start_date }}</td>
       <td>{{ $order->end_date}}</td>
       <td>{{ $order->status}}</td>
