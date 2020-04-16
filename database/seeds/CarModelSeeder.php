@@ -76,5 +76,35 @@ class CarModelSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+		DB::table('car_models')->insert([
+			'name' => 'Dragon Airforce GTX ULTRA XTREME 9000',
+			'brand' => 'Dragon Airforce SA',
+			'year' => '2019',
+			'description' => $loremipsum,
+			'image' => 'img/cars/dragon_airforce.jpg',
+			'type' => 'HÍBRIDO DE ALTO CILINDRAJE',
+			'created_at' => now(),
+			'updated_at' => now()
+		 ]);
+		 DB::table('car_models')->insert([
+			'name' => 'Jetix Stream ultra attack specialized carbonated flow',
+			'brand' => 'Silver Fang incorporated',
+			'year' => '2008',
+			'description' => $loremipsum,
+			'image' => 'img/cars/jetix_stream.jpg',
+			'type' => 'TODO TERRENO',
+			'created_at' => now(),
+			'updated_at' => now()
+		 ]);
+		 DB::table('car_models')->insert([
+			'name' => 'Coupre Nissan ultra smart special promo + cute model',
+			'brand' => 'Trump inc.',
+			'year' => '2015',
+			'description' => $loremipsum,
+			'image' => 'img/cars/special_promo.jpg',
+			'type' => 'UNNECESSARY',
+			'created_at' => now(),
+			'updated_at' => now()
+		 ]);
     }
 }
