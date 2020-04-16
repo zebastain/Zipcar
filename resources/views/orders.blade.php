@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+@if(count($orders) > 0)
 <script src="{{asset('js/methods.js')}}"></script>
 <table class="table mt-5" style="width: 80%; margin: 0 auto; text-align: center;">
   <thead class="thead-dark">
@@ -36,4 +37,10 @@
     </tr>
     @endforeach
   </tbody>
+@else
+  <div class="text-center">
+    <img src="{{asset('img/empty-gray.png')}}" alt="empty" class="center mt-5 mb-5" width="15%">
+    <span style="font-size:35px;color:gray;">You haven't placed any order yet</span>
+  </div>
+@endif
 @endsection

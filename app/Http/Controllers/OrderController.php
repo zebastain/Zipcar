@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use App\Car;
 use App\Borrow;
-
 class OrderController extends Controller
 {
     /**
@@ -43,6 +43,15 @@ class OrderController extends Controller
             "start_date" => "required",
             "end_date" => "required"
         ]);
+
+        if (strtotime($request->start_date) > strtotime($request->end_date)){
+            $error = ValidationException::withMessages([
+                'end_date' => __('End date must be after start date'),
+                'start_date' => __('Start date must be before end date')
+            ]);
+            throw $error;
+        }
+
         $borrow = new Borrow;
         $borrow->user = Auth::id();
         $borrow->car = $request->car;
