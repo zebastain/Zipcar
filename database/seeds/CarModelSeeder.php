@@ -21,7 +21,7 @@ class CarModelSeeder extends Seeder
             'brand' => 'Renault',
             'year' => '2020',
             'description' => $loremipsum,
-            'image' => 'img/cars/duster.jpg',
+            'image' => 'images/cars/duster.jpg',
             'type' => 'SUV',
             'created_at' => now(),
             'updated_at' => now()
@@ -31,7 +31,7 @@ class CarModelSeeder extends Seeder
             'brand' => 'Nissan',
             'year' => '2004',
             'description' => $loremipsum,
-            'image' => 'img/cars/350z.jpg',
+            'image' => 'images/cars/350z.jpg',
             'type' => 'COUPE',
             'created_at' => now(),
             'updated_at' => now()
@@ -41,7 +41,7 @@ class CarModelSeeder extends Seeder
             'brand' => 'Toyota',
             'year' => '2004',
             'description' => $loremipsum,
-            'image' => 'img/cars/cresta.jpg',
+            'image' => 'images/cars/cresta.jpg',
             'type' => 'COUPE',
             'created_at' => now(),
             'updated_at' => now()
@@ -51,7 +51,7 @@ class CarModelSeeder extends Seeder
             'brand' => 'Mazda',
             'year' => '1990',
             'description' => $loremipsum,
-            'image' => 'img/cars/miata_mx5.jpeg',
+            'image' => 'images/cars/miata_mx5.jpeg',
             'type' => 'COUPE',
             'created_at' => now(),
             'updated_at' => now()
@@ -61,7 +61,7 @@ class CarModelSeeder extends Seeder
             'brand' => 'Mitsubishi',
             'year' => '2005',
             'description' => $loremipsum,
-            'image' => 'img/cars/3000GT.jpg',
+            'image' => 'images/cars/3000GT.jpg',
             'type' => 'COUPE',
             'created_at' => now(),
             'updated_at' => now()
@@ -71,7 +71,7 @@ class CarModelSeeder extends Seeder
             'brand' => 'Mitsubishi',
             'year' => '2005',
             'description' => $loremipsum,
-            'image' => 'img/cars/lancer_evolution_viii.jpg',
+            'image' => 'images/cars/lancer_evolution_viii.jpg',
             'type' => 'COUPE',
             'created_at' => now(),
             'updated_at' => now()
@@ -81,7 +81,7 @@ class CarModelSeeder extends Seeder
 			'brand' => 'Audi',
 			'year' => '2018',
 			'description' => $loremipsum,
-			'image' => 'img/cars/audi_r8.jpg',
+			'image' => 'images/cars/audi_r8.jpg',
 			'type' => 'COUPE',
 			'created_at' => now(),
 			'updated_at' => now()
@@ -91,7 +91,7 @@ class CarModelSeeder extends Seeder
 			'brand' => 'Jaguar',
 			'year' => '2019',
 			'description' => $loremipsum,
-			'image' => 'img/cars/jaguar.jpg',
+			'image' => 'images/cars/jaguar.jpg',
 			'type' => 'COUPE',
 			'created_at' => now(),
 			'updated_at' => now()
@@ -101,7 +101,7 @@ class CarModelSeeder extends Seeder
 			'brand' => 'Porsche',
 			'year' => '2019',
 			'description' => $loremipsum,
-			'image' => 'img/cars/porsche.jpg',
+			'image' => 'images/cars/porsche.jpg',
 			'type' => 'COUPE',
 			'created_at' => now(),
 			'updated_at' => now()

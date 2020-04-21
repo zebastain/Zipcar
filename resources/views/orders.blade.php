@@ -5,8 +5,10 @@
 
 @section('content')
 @if(count($orders) > 0)
+
+<h1 class="text-center">{{__('My orders')}}</h1>
 <script src="{{asset('js/methods.js')}}"></script>
-<table class="table mt-5" style="width: 80%; margin: 0 auto; text-align: center;">
+<table class="table mt-5" style="width: 80%; margin: 0 auto; text-align: center; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.27);">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -35,7 +37,7 @@
   </tbody>
 @else
   <div class="text-center">
-    <img src="{{asset('img/empty-gray.png')}}" alt="empty" class="center mt-5 mb-5" width="15%">
+    <img src="{{asset('images/empty-gray.png')}}" alt="empty" class="center mt-5 mb-5" width="15%">
     <span style="font-size:35px;color:gray;">You haven't placed any order yet</span>
   </div>
 @endif

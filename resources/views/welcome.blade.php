@@ -12,7 +12,7 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
-  <link rel="icon" type="image/png" href="./img/logo3.png">
+  <link rel="icon" type="image/png" href="{{ asset('images/logo3.png') }}">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
   </script>
@@ -60,7 +60,7 @@
       <ul class="navbar-nav logo ml-auto">
         <li class="nav-item">
           <a class="nav-link text-light" href="#" im>
-            <img src="./img/logo.svg">
+            <img src="{{asset('images/logo.svg')}}">
           </a>
         </li>
       </ul>
@@ -92,26 +92,26 @@
     <div class="p-2 bd-highlight text-white">The freedom of cars on demand in hundreds of cities, <br>ready to book by the hour or day.</div>
     <a class="nav-link text-light bg-warning rounded-pill text-center mt-4 join-button shadowed " style="width: 60%; font-weight: 700;" href="#"><i class="far fa-play-circle"></i>    Watch how it works</a>
   </div>
-  <img src="./img/back3.png" class="selectDisable" style="max-height: 100%; max-width: 100%; z-index: -1;">
+  <img src="images/back3.png" class="selectDisable" style="max-height: 100%; max-width: 100%; z-index: -1;">
 
   <h1 class="mt-5 ml-5 pb-3 mb-5 text-left">Services</h1>
   <div class="container marketing mt-5">
 
     <div class="row">
       <div class="col-lg-4">
-        <img src="{{asset('img/car.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
+        <img src="{{asset('images/car.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
         <h2>Catalog</h2>
         <p>We offer you an extense car catalog, so you can choose the one that suits your necessities the most.</p>
         <p><a class="btn bg-warning shadowed mt-4" href="{{route('catalog')}}" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-lg-4">
-        <img src="{{asset('img/crown.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
+        <img src="{{asset('images/crown.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
         <h2>Our plans</h2>
         <p>We offer several plans: standard, premium, and advanced. Choose the one more suited for your needs, and remember you can cancel it at anytime.</p>
         <p><a class="btn bg-warning shadowed mt-4" href="#" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-lg-4">
-        <img src="{{asset('img/rental-car.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
+        <img src="{{asset('images/rental-car.png')}}" alt="Generic placeholder image" width="140" height="140" class="mb-1">
         <h2>Car rental</h2>
         <p>You can rent any of our cars up to 30 days, and if you need, reserve them with even 10 days of anticipation.</p>
         <p><a class="btn bg-warning shadowed mt-4" href="#" role="button">View details &raquo;</a></p>

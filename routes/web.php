@@ -25,5 +25,7 @@ Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/model/{id}', 'CarModelController@show')->name('model.show');
 Route::get('/cars/{model}', 'CarsController@index');
 // ----- account ----
+
 Route::get('/account', 'UserController@index')->name('account')->middleware('auth');
+Route::post('/account', 'UserController@update')->name('account.update')->middleware('auth');
 Route::delete('/account/{id}/delete', 'UserController@delete')->name('account.delete')->middleware('auth');
