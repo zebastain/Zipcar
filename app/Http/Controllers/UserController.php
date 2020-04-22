@@ -14,7 +14,7 @@ class UserController extends Controller
         return view('account', ['user' => Auth::user()]);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         if (count(Borrow::where('user', Auth::id())->get()) == 0 ){
             $user = User::findOrFail($id);
@@ -25,7 +25,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $userId)
     {
         $user = Auth::user();
         $request->validate([

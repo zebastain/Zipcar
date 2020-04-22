@@ -38,11 +38,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="navbar-item">
+                            <a href="{{route('catalog')}}" class="text-white nav-link">Catalog</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -56,19 +59,20 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="{{asset(Auth::user()->profile_picture)}}" height="30px" width="30px" class="rounded-circle">
-                                    <span class="caret ml-1">{{ Auth::user()->name }} </span>
+                                    <img src="{{asset(Auth::user()->profile_picture)}}" height="25px" width="25px" class="rounded-circle">
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
 
-                                    <a class="dropdown-item" href="{{ route('order') }}">
+                                    <span class="dropdown-item disabled">{{Auth::user()->name}}</span>
+                                    <div class="dropdown-divider"></div> 
+
+                                    <a class="dropdown-item" href="{{ route('order.index') }}">
                                         {{ __('My Orders') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('account') }}">
+                                    <a class="dropdown-item" href="{{ route('account.index') }}">
                                         {{ __('Account') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -78,6 +82,7 @@
                                     </a>
                                     
                                 </div>
+                                
                             </li>
                         @endguest
                     </ul>

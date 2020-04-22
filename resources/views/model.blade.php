@@ -28,12 +28,14 @@
                 option.selected = true;
                 selector.append(option);
                 data.forEach(element => {
-                if (element.status === quality){
-                    console.log(element.number_plate);
-                    selector.append(new Option(element.number_plate, element.number_plate));
-                }
+                    if (element.status === quality){
+                        console.log(element.number_plate);
+                        selector.append(new Option(element.number_plate, element.number_plate));
+                    }
+                });
             });
-        });
+        }).catch((e) => {
+            console.log(e);
         });
         
         $('[type="date"]').prop('min', function(){

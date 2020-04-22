@@ -10893,3 +10893,9 @@ a.custom-card:hover {
   color: inherit;
   text-decoration: none;
 }
+
+.fixed-button{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}

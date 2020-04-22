@@ -7,25 +7,27 @@ Auth::routes();
 
 Route::get('/', function () {
     if (Auth::check()){
-        return view('home');
+        return redirect('order');   
     } else {
         return view('welcome');
     }
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function(){
+    Route::resource('order', 'OrderController')->only([
+        'index', 'store', 'destroy'
+    ]);
 
-// ----- Orders -----
-Route::get('/order', 'OrderController@index')->name('order')->middleware('auth');
-Route::post('/order/store', 'OrderController@store')->name('order.store')->middleware('auth');
-Route::delete('/order/{id}/delete', 'OrderController@delete')->name('order.delete')->middleware('auth');
+    Route::resource('account', 'UserController')->only([
+        'index', 'update', 'destroy'
+    ]);
 
-// ----- Catalog -----
+    Route::resource('incident', 'IncidentController')->only([
+        'destroy', 'update', 'store'
+    ]);
+});
+
+Route::get('/cars/{model}', 'CarsController@index');
+Route::get('/car/{id}', 'CarsController@show')->name('car.show');
 Route::get('/catalog', 'CatalogController@index')->name('catalog');
 Route::get('/model/{id}', 'CarModelController@show')->name('model.show');
-Route::get('/cars/{model}', 'CarsController@index');
-// ----- account ----
-
-Route::get('/account', 'UserController@index')->name('account')->middleware('auth');
-Route::post('/account', 'UserController@update')->name('account.update')->middleware('auth');
-Route::delete('/account/{id}/delete', 'UserController@delete')->name('account.delete')->middleware('auth');

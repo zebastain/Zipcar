@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Incident;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
-use App\Car;
-use App\Borrow;
-class OrderController extends Controller
+use Illuminate\Http\Request;
+
+class IncidentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,17 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('orders', ["orders" => Borrow::where('user', Auth::id())->get()]);
+        //
+    }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -29,29 +37,17 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "car" => "required",
-            "start_date" => "required",
-            "end_date" => "required"
+            'date' => 'required',
+            'description' => 'required'
         ]);
 
-        if (strtotime($request->start_date) > strtotime($request->end_date)){
-            $error = ValidationException::withMessages([
-                'end_date' => __('End date must be after start date'),
-                'start_date' => __('Start date must be before end date')
-            ]);
-            throw $error;
-        }
-
-        $borrow = new Borrow;
-        $borrow->user = Auth::id();
-        $borrow->car = $request->car;
-        $borrow->start_date = $request->start_date;
-        $borrow->end_date = $request->end_date;
-        $borrow->save();
-        $car = Car::findOrFail($request->car);
-        $car->availability = "UNAVALIABLE";
-        $car->save();
-        return redirect()->route("order.index");
+        $incident = new Incident;
+        $incident->user = Auth::id();
+        $incident->car = $request->car;
+        $incident->date = $request->date;
+        $incident->description = $request->description;
+        $incident->save();
+        return back();
     }
 
     /**
@@ -96,11 +92,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $borrow = Borrow::findOrFail($id);
-        $car = Car::findOrFail($borrow->car);
-        $car->availability = "AVAILABLE";
-        $car->save();
-        $borrow->delete();
-        return "Deleted order " . $id;
+        Incident::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

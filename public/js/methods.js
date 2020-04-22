@@ -1,29 +1,31 @@
-function cancelOrder(id){
-    if (confirm("Are you sure you want to cancel this order?")){
-        row = $("#order-" + id);
+function deleteElement(id, type){
+    if (confirm("Are you sure?")){
+        row = $("#"+ type + "-" + id);
         $.ajax({
-            url: "order/"+id+"/delete",
+            url: "/" + type+"/"+id,
             method: "DELETE",
             headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
             success: function(result){
                 row.remove();
             },
             error: function(xhr){
+                console.log(type+"/"+id);
                 console.log("Something went wrong: " + xhr.responseText);
             }
         });
     }
 }
 
+
 function deleteAccount(id){
     if (confirm("Are you sure you want to delete your account? :(")){
         $.ajax({
-            url: "account/"+id+"/delete",
+            url: "account/"+id,
             method: "DELETE",
             headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
             success: function(result){
                 if(result==1){
-                    alert("cuenta eliminada correctamente");
+                    alert("Cuenta eliminada correctamente");
                 }else{
                     alert("No puede realizar esta operación mientras tenga préstamos o multas pendientes.");
                 }

@@ -4,9 +4,6 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <h1>Configuración</h1>
-</div>
 <div class="card" style="width: 50%; margin: 0 auto;">
   <div class="card-header"> 
     <ul class="nav nav-tabs card-header-tabs pull-right"  id="myTab" role="tablist">
@@ -23,11 +20,11 @@
   </div>
   <div class="card-body">
     <div class="tab-content" id="myTabContent">
-
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <img src="{{ asset($user->profile_picture)}}" class="rounded mx-auto d-block" alt="...">
-        <form method="post" action="{{route('account.update')}}" enctype="multipart/form-data">
+        <img src="{{ asset($user->profile_picture)}}" class="rounded mx-auto d-block" alt="..." height="70%" width="70%">
+        <form method="post" action="{{route('account.update', Auth::id())}}" enctype="multipart/form-data">
           @csrf
+          @method('PATCH')
           <div class="form-group">
             <label for="name">{{__('Profile picture')}}</label>
             <input type="file" name="picture" class="form-control-file">
