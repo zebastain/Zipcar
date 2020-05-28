@@ -25,7 +25,24 @@ Route::middleware('auth')->group(function(){
     Route::resource('incident', 'IncidentController')->only([
         'destroy', 'update', 'store'
     ]);
+
+
+    Route::middleware('role:admin')->group(function() {
+        Route::resource('/car', 'CarsController')->only([
+            'store', 'destroy', 'create'
+        ]);
+        Route::put('/car', 'CarsController@update')->name('car.update');
+        
+        Route::resource('/model', 'CarModelController')->only([
+            'store', 'destroy', 'create'
+        ]);
+        Route::put('/model', 'CarModelController@update')->name('model.update');
+        
+    });
+    
+
 });
+
 
 Route::get('/cars/{model}', 'CarsController@index');
 Route::get('/car/{id}', 'CarsController@show')->name('car.show');

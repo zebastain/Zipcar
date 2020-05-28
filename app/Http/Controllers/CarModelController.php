@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\CarModel;
 use App\Car;
 
@@ -25,7 +26,7 @@ class CarModelController extends Controller
      */
     public function create()
     {
-        //
+        return view('model_admin', ['models' => CarModel::all()]);
     }
 
     /**
@@ -36,7 +37,7 @@ class CarModelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "yeehaw";
     }
 
     /**
@@ -70,9 +71,34 @@ class CarModelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+        $request->validate([
+            "edit-name" => "required",
+            "edit-description" => "required",
+            "edit-brand" => "required",
+            "edit-year" => "required",
+            "edit-type" => "required",
+            "edit-picture" => "image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+        ]);
+        $model = CarModel::findOrFail($id);
+        $model->name = $request->input("edit-name");
+        $model->description = $request->input("edit-description");
+        $model->brand = $request->input("edit-brand");
+        $model->year = $request->input("edit-year");
+        $model->type = $request->input("edit-type");
+        $filename = "None";
+        if ($request->hasFile('edit_picture')){
+            if (Storage::disk('local')->exists($model->image)) {
+                Storage::delete($model->image);
+            }
+            $filename = $model->id . '_model' . time() . '.' .  $request->edit_picture->getClientOriginalExtension();
+            $request->edit_picture->storeAs('images/cars', $filename);
+            $model->image = 'images/cars/' . $filename;
+        }
+        $model->save();
+        return back();
     }
 
     /**
