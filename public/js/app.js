@@ -41152,11 +41152,7 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(function () {
-  $('select').selectize({
-    sortField: [{
-      'field': 'text'
-    }]
-  });
+  $('select').selectize();
 });
 
 window.deleteElement = function (id, type) {

@@ -12,7 +12,10 @@
 <div class="card mx-auto w-75">
     <div class="card-header">
         <span>{{__('Models')}}</span>
-        <button class="btn btn-sm btn-primary float-right">{{__('Add model')}}</button>
+        <a class="btn btn-sm btn-primary float-right"
+           data-toggle="modal" href="#modal-create">
+            {{__('Add model')}}
+        </a>
     </div>
     <div class="card-body">
         <table class="table">
@@ -52,7 +55,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">Editar una actividad</div>
+                <div class="modal-title">{{__('Editing a car model')}}</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -116,6 +119,85 @@
                             <option value="COUPE">{{__('Coupe')}}</option>
                         </select>
                         @error('edit-type')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="{{__('Send')}}">
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>
+
+<div class="modal fade" id="modal-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">{{__('Creating a car model')}}</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{route('model.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body" id="modal-create-body">
+                    <input hidden name="id" id="id" type="number">
+                    <div class="form-group">
+                        <label for="create-name">{{__('Name')}}</label>
+                        <input class="form-control @error('create-name') is-invalid @enderror" 
+                            type="text" id="create-name" name="create-name"
+                            placeholder="{{__("Enter model's name")}}">
+                        @error('create-name')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="create-brand">{{__('Brand')}}</label>
+                        <input class="form-control @error('create-brand') is-invalid @enderror" 
+                            type="text" id="create-brand" name="create-brand"
+                            placeholder="{{__("Enter model's brand")}}">
+                        @error('create-brand')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="create-year">{{__('Year')}}</label>
+                        <input class="form-control @error('create-year') is-invalid @enderror" 
+                            type="number" id="create-year" name="create-year"
+                            placeholder="{{__("Enter model's year")}}">
+                        @error('create-year')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="create-description">{{__('Description')}}</label>
+                        <textarea name="create-description" 
+                                  class="form-control @error('create-description') is-invalid @enderror"
+                                  id="create-description">
+                        </textarea>
+                        @error('create-description')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="create_picture">{{__('Car picture')}}</label>
+                        <input type="file" name="create_picture" class="form-control-file">
+                        @error('create_picture')
+                        <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                      </div>
+                    <div class="form-group">
+                        <label for="create-type">{{__('Type')}}</label>
+                        <select id="create-type" name="create-type">
+                            <option hidden disabled selected value="none">{{__('Select a type')}}</option>
+                            <option value="SEDAN">{{__('Sedan')}}</option>
+                            <option value="SUV">{{__('SUV')}}</option>
+                            <option value="VAN">{{__('Van')}}</option>
+                            <option value="MINIVAN">{{__('Minivan')}}</option>
+                            <option value="HATCHBACK">{{__('Hatchback')}}</option>
+                            <option value="COUPE">{{__('Coupe')}}</option>
+                        </select>
+                        @error('create-type')
                             <small class="text-danger">{{$message}}</small>
                         @enderror
                     </div>

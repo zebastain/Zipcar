@@ -6,13 +6,7 @@
 require('./bootstrap');
 
 $(function(){
-    $('select').selectize({
-        sortField: [
-            {
-                'field': 'text'
-            }
-        ]
-    });
+    $('select').selectize();
 });
 
 window.deleteElement = function (id, type) {

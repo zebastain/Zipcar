@@ -37,7 +37,31 @@ class CarModelController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            "create-name" => "required",
+            "create-description" => "required",
+            "create-brand" => "required",
+            "create-year" => "required",
+            "create-type" => "required",
+            "create-picture" => "image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+        ]);
+        $model = new CarModel;
+        $model->name = $request->input("create-name");
+        $model->description = $request->input("create-description");
+        $model->brand = $request->input("create-brand");
+        $model->year = $request->input("create-year");
+        $model->type = $request->input("create-type");
+        $filename = "default.png";
+        if ($request->hasFile('edit_picture')){
+            if (Storage::disk('local')->exists($model->image)) {
+                Storage::delete($model->image);
+            }
+            $filename = $model->id . '_model' . time() . '.' .  $request->edit_picture->getClientOriginalExtension();
+            $request->edit_picture->storeAs('images/cars', $filename);
+        }
+        $model->image = 'images/cars/' . $filename;
+        $model->save();
+        return back();
     }
 
     /**
@@ -51,17 +75,6 @@ class CarModelController extends Controller
         $model = CarModel::findOrFail($id);
         $cars = Car::where('model', $model->id)->get();
         return view('model', ['model' => $model, 'cars'=>$cars]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
