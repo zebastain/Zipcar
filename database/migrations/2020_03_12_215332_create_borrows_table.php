@@ -22,7 +22,8 @@ class CreateBorrowsTable extends Migration
             $table->enum("status", ["ACTIVE", "FINISHED", "OVERDUE"]);
             $table->foreign("user")->references("username")->on("users")
                   ->onDelete("cascade");
-            $table->foreign("car")->references("number_plate")->on("cars");
+            $table->foreign("car")->references("number_plate")->on("cars")
+                  ->onDelete("cascade");
             $table->timestamps();
         });
     }

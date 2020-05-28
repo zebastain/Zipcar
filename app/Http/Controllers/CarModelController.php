@@ -37,7 +37,7 @@ class CarModelController extends Controller
      */
     public function store(Request $request)
     {
-        return "yeehaw";
+        
     }
 
     /**
@@ -109,6 +109,7 @@ class CarModelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CarModel::findOrFail($id)->delete();
+        return "model " . $id . " deleted";
     }
 }

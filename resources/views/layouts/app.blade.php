@@ -11,9 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/methods.js') }}"></script>
     <script src="https://kit.fontawesome.com/097dcd9a5c.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    @yield("scripts")
     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,6 +20,8 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    @yield("styles")
 </head>
 <body>
     <div id="app">
@@ -67,7 +68,16 @@
                                     </form>
 
                                     <span class="dropdown-item disabled">{{Auth::user()->name}}</span>
-                                    <div class="dropdown-divider"></div> 
+                                    <div class="dropdown-divider"></div>
+
+                                    @if (Auth::user()->role == "admin")
+                                        <a class="dropdown-item" href="{{ route('model.create') }}">
+                                            {{ __('Manage models') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('car.create') }}">
+                                            {{ __('Manage cars') }}
+                                        </a>    
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('order.index') }}">
                                         {{ __('My Orders') }}

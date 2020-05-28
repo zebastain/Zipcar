@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('head')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js" integrity="sha256-412FxT7SHXk39AYYNe8+6YGQAhZhlKhthDw2Z3qp/B0=" crossorigin="anonymous"></script>
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/selectize.css')}}">
 @endsection
 
 @section('title')
@@ -23,10 +22,10 @@
             </thead>
             <tbody class="text-center">
                 @foreach ($models as $model)
-                <tr>
+                <tr id="model-{{$model->id}}">
                     <td>{{$model->name}}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-danger">
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteElement({{$model->id}}, 'model')">
                             <i class="fa fa-trash"></i>
                         </button>
                         <a class="btn btn-sm btn-outline-secondary btn-edit"
@@ -126,33 +125,4 @@
         </div>
     </div>    
 </div>
-
-<script>
-    $ (function() {
-        $("#edit-type").selectize({
-            sortField: 'text'
-        });
-        $(document).on('click', '.btn-edit', function(){
-            var id = $(this).data('id');
-            var name = $(this).data('name');
-            var brand = $(this).data('brand');
-            var description = $(this).data('description');
-            var image = $(this).data('image');
-            var year = $(this).data('year');
-            var type = $(this).data('type');
-            
-            $("#modal-edit-body #id").val(id);
-            $("#modal-edit-body #edit-name").val(name);
-            $("#modal-edit-body #edit-brand").val(brand);
-            $("#modal-edit-body #edit-year").val(year);
-            $("#modal-edit-body #edit-description").val(description);
-            a = $("#modal-edit-body #edit-type option")
-                .filter((i,e) => $(e).val() == type)
-                .prop("selected", true);
-        });
-    });
-    
-
-</script>
-
 @endsection
