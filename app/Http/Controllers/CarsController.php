@@ -38,7 +38,19 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'create-mileage' => 'required',
+            'create-status' => 'required',
+            'create-plate' => 'required'
+        ]);
+        
+        $car = new Car;
+        $car->number_plate = $request->input('create-plate');
+        $car->mileage = $request->input('create-mileage');
+        $car->status = $request->input('create-status');
+        $car->model = $request->model;
+        $car->save();
+        return back();  
     }
 
     /**
@@ -86,6 +98,7 @@ class CarsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Car::findOrFail($id)->delete();
+        return $id . " deleted";
     }
 }

@@ -41151,10 +41151,6 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-$(function () {
-  $('select').selectize();
-});
-
 window.deleteElement = function (id, type) {
   if (confirm("Are you sure?")) {
     row = $("#" + type + "-" + id);
@@ -41248,39 +41244,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/model_admin.js":
-/*!*************************************!*\
-  !*** ./resources/js/model_admin.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {$(function () {
-  $("#edit-type").selectize({
-    sortField: 'text'
-  });
-  $(document).on('click', '.btn-edit', function () {
-    var id = $(this).data('id');
-    var name = $(this).data('name');
-    var brand = $(this).data('brand');
-    var description = $(this).data('description');
-    var image = $(this).data('image');
-    var year = $(this).data('year');
-    var type = $(this).data('type');
-    $("#modal-edit-body #id").val(id);
-    $("#modal-edit-body #edit-name").val(name);
-    $("#modal-edit-body #edit-brand").val(brand);
-    $("#modal-edit-body #edit-year").val(year);
-    $("#modal-edit-body #edit-description").val(description);
-    a = $("#modal-edit-body #edit-type option").filter(function (i, e) {
-      return $(e).val() == type;
-    }).prop("selected", true);
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
-
-/***/ }),
-
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -41293,14 +41256,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/js/model_admin.js ./resources/sass/app.scss ***!
-  \*******************************************************************************************/
+/*!*************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/vdguevara/Documents/Universidad/Diseño/Zipcar/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/vdguevara/Documents/Universidad/Diseño/Zipcar/resources/js/model_admin.js */"./resources/js/model_admin.js");
 module.exports = __webpack_require__(/*! /home/vdguevara/Documents/Universidad/Diseño/Zipcar/resources/sass/app.scss */"./resources/sass/app.scss");
 
 

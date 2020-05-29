@@ -11,9 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js([
-      'resources/js/app.js',
-      'resources/js/model_admin.js'] , 'public/js')
+mix.js('resources/js/app.js', 'public/js')
+   .js('resources/js/model_admin.js', 'public/js')
+   .js('resources/js/model.js', 'public/js')
    .styles('node_modules/selectize/dist/css/selectize.css', 'public/css/selectize.css')
    .sass('resources/sass/app.scss', 'public/css')
    .autoload({

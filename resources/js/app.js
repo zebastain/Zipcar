@@ -5,10 +5,6 @@
  */
 require('./bootstrap');
 
-$(function(){
-    $('select').selectize();
-});
-
 window.deleteElement = function (id, type) {
     if (confirm("Are you sure?")){
         row = $("#"+ type + "-" + id);

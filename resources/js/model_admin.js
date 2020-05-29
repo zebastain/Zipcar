@@ -1,7 +1,5 @@
 $ (function() {
-    $("#edit-type").selectize({
-        sortField: 'text'
-    });
+    $('select').selectize();
     $(document).on('click', '.btn-edit', function(){
         var id = $(this).data('id');
         var name = $(this).data('name');

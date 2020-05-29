@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('styles')
-    <link rel="stylesheet" href="{{asset('css/selectize.css')}}">
+@section('scripts')
+    <script src="{{asset('js/model_admin.js')}}"></script>
 @endsection
 
 @section('title')
