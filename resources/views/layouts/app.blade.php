@@ -75,9 +75,6 @@
                                         <a class="dropdown-item" href="{{ route('model.create') }}">
                                             {{ __('Manage models') }}
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('car.create') }}">
-                                            {{ __('Manage cars') }}
-                                        </a>    
                                     @endif
 
                                     <a class="dropdown-item" href="{{ route('order.index') }}">
