@@ -23,6 +23,7 @@ class CarModelSeeder extends Seeder
             'description' => $loremipsum,
             'image' => 'images/cars/duster.jpg',
             'type' => 'SUV',
+            'base_price' => '50000',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -33,6 +34,7 @@ class CarModelSeeder extends Seeder
             'description' => $loremipsum,
             'image' => 'images/cars/350z.jpg',
             'type' => 'COUPE',
+            'base_price' => '50000',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -43,6 +45,7 @@ class CarModelSeeder extends Seeder
             'description' => $loremipsum,
             'image' => 'images/cars/cresta.jpg',
             'type' => 'COUPE',
+            'base_price' => '50000',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -53,6 +56,7 @@ class CarModelSeeder extends Seeder
             'description' => $loremipsum,
             'image' => 'images/cars/miata_mx5.jpeg',
             'type' => 'COUPE',
+            'base_price' => '50000',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -63,6 +67,7 @@ class CarModelSeeder extends Seeder
             'description' => $loremipsum,
             'image' => 'images/cars/3000GT.jpg',
             'type' => 'COUPE',
+            'base_price' => '50000',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -74,6 +79,7 @@ class CarModelSeeder extends Seeder
             'image' => 'images/cars/lancer_evolution_viii.jpg',
             'type' => 'COUPE',
             'created_at' => now(),
+            'base_price' => '50000',
             'updated_at' => now()
         ]);
 		DB::table('car_models')->insert([
@@ -82,7 +88,8 @@ class CarModelSeeder extends Seeder
 			'year' => '2018',
 			'description' => $loremipsum,
 			'image' => 'images/cars/audi_r8.jpg',
-			'type' => 'COUPE',
+            'type' => 'COUPE',
+            'base_price' => '50000',
 			'created_at' => now(),
 			'updated_at' => now()
 		 ]);
@@ -92,7 +99,8 @@ class CarModelSeeder extends Seeder
 			'year' => '2019',
 			'description' => $loremipsum,
 			'image' => 'images/cars/jaguar.jpg',
-			'type' => 'COUPE',
+            'type' => 'COUPE',
+            'base_price' => '50000',
 			'created_at' => now(),
 			'updated_at' => now()
 		 ]);
@@ -102,7 +110,8 @@ class CarModelSeeder extends Seeder
 			'year' => '2019',
 			'description' => $loremipsum,
 			'image' => 'images/cars/porsche.jpg',
-			'type' => 'COUPE',
+            'type' => 'COUPE',
+            'base_price' => '50000',
 			'created_at' => now(),
 			'updated_at' => now()
 		 ]);

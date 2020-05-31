@@ -47,6 +47,7 @@ class OrderController extends Controller
         $borrow->car = $request->car;
         $borrow->start_date = $request->start_date;
         $borrow->end_date = $request->end_date;
+        $borrow->debt = $request->input("total-price");
         $borrow->save();
         $car = Car::findOrFail($request->car);
         $car->availability = "UNAVALIABLE";

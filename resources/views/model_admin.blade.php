@@ -40,8 +40,11 @@
                             data-description="{{$model->description}}"
                             data-image="{{$model->image}}"
                             data-type="{{$model->type}}"
-                            >
+                            data-price="{{$model->base_price}}">
                             <i class="fa fa-pen"></i>
+                        </a>
+                        <a href="{{route('model.show', $model->id)}}" class="btn btn-sm btn-outline-secondary">
+                            <i class="fa fa-car"></i>
                         </a>
                     </td>
                 </tr>
@@ -98,6 +101,13 @@
                         </textarea>
                         @error('edit-description')
                             <small class="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-price">{{__('Base price')}}</label>
+                        <input type="number" id="edit-price" name="edit-price" class="form-control-file" step="0.01">
+                        @error('edit-price')
+                        <small clas="text-danger">{{$message}}</small>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -180,12 +190,19 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="create-price">{{__('Base price')}}</label>
+                        <input type="number" name="create-price" class="form-control-file">
+                        @error('create-price')
+                        <small clas="text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="create_picture">{{__('Car picture')}}</label>
                         <input type="file" name="create_picture" class="form-control-file">
                         @error('create_picture')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
-                      </div>
+                    </div>
                     <div class="form-group">
                         <label for="create-type">{{__('Type')}}</label>
                         <select id="create-type" name="create-type">

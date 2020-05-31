@@ -15,6 +15,7 @@
       <th scope="col">{{__("From")}}</th>
       <th scope="col">{{__("To")}}</th>
       <th scope="col">{{__("Status")}}</th>
+      <th scope="col">{{__("Debt")}}</th>
       <th scope="col">{{__("Actions")}}</th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
       <td>{{ $order->start_date }}</td>
       <td>{{ $order->end_date}}</td>
       <td>{{ $order->status}}</td>
+      <td>{{ number_format($order->debt, 2, ",", ".") }}</td>
       <td>
         <button class="btn btn-sm btn-outline-danger" type="button" onclick="deleteElement({{$order->id}}, 'order')">
           <i class="fa fa-trash"></i>

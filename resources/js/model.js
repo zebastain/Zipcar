@@ -1,5 +1,11 @@
 require('selectize')
 $(function(){
+    var base_price = parseFloat($("#car-model").data('price'));
+    var extra_quality = base_price * 0.1;
+    var extra_date = 0;
+    const id = $("#car-model").data("id");
+    
+    $("#total-price").text(format(base_price));
     car_quality = $('#car-quality').selectize();
     car_quality[0].selectize.clear();
     select = $('#car').selectize({
@@ -7,8 +13,7 @@ $(function(){
     });
     selectize = select[0].selectize;
     selectize.setValue("none");
-
-    let id = $("#car-model").data("id");
+    
     new Promise((resolve, reject) => {
         $.get("/cars/"+id, function(data, status){
             resolve(data);
@@ -18,6 +23,16 @@ $(function(){
             selectize.clear();
             selectize.clearOptions();
             let quality = $('#car-quality').val();
+            if (quality == "GOOD") {
+                extra_quality = base_price*0.1;
+            } else if (quality == "BAD") {
+                extra_quality = -base_price*0.1;
+            } else {
+                extra_quality = 0;
+            }
+            let price = base_price + extra_date + extra_quality;
+            $("#total-price-field").val(price);
+            $("#total-price").text(format(price));  
             data.forEach(element => {
                 if (element.status === quality){
                     console.log(element.number_plate + " - " + element.status);
@@ -28,6 +43,23 @@ $(function(){
         });
     }).catch((e) => {
         console.log(e);
+    });
+
+    $ ("[type='date']").change(function(){
+        console.log("Hey");
+        extra_date = 0;
+        let end_date_txt = $("#end_date").val();
+        let start_date_txt = $("#start_date").val();
+        if (start_date_txt != "" && end_date_txt != "") {
+            end_date = new Date(end_date_txt);
+            start_date = new Date(start_date_txt);
+            difference = Math.floor((end_date - start_date) / (1000*60*60*24));
+            extra_date = difference * 1000;
+        }
+        let price = base_price + extra_date + extra_quality;
+        $("#total-price-field").val(price);
+        $("#total-price").text(format(price));  
+
     });
     
     $('[type="date"]').prop('min', function(){
@@ -43,3 +75,8 @@ $(function(){
         return [year, month, day].join('-');
     }); 
 });
+
+
+function format(number) {
+    return new Intl.NumberFormat('co-CO', { style: 'currency', currency: 'COP' }).format(number);
+}
